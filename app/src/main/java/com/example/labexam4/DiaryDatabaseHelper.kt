@@ -23,7 +23,7 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery =
-            "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_TELEPHONE INTEGER, $COLUMN_ADDRESS TEXT, $COLUMN_BIRTHDAY INTEGER)"
+            "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_TELEPHONE INTEGER, $COLUMN_ADDRESS TEXT, $COLUMN_BIRTHDAY TEXT)"
         db?.execSQL(createTableQuery)
     }
 
@@ -44,5 +44,27 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         }
         db.insert(TABLE_NAME, null, values)
         db.close()
+    }
+
+    fun getAllFriends(): List<Diary> {
+        val friendsList = mutableListOf<Diary>()
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME"
+        val cursor = db.rawQuery(query, null)
+
+
+        while (cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
+            val telephone= cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TELEPHONE))
+            val address = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS))
+            val birthday = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BIRTHDAY))
+
+            val diary = Diary(id, name, telephone, address, birthday)
+            friendsList.add(diary)
+        }
+        cursor.close()
+        db.close()
+        return friendsList
     }
 }

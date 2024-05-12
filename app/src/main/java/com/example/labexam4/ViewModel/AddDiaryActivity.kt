@@ -23,7 +23,7 @@ class AddDiaryActivity : AppCompatActivity() {
             val name = binding.nameEditText.text.toString()
             val telephone = binding.telephoneEditText.text.toString().toIntOrNull() ?: 0
             val address = binding.addressEditText.text.toString()
-            val birthday = binding.birthdayEditText.text.toString().toIntOrNull() ?: 0
+            val birthday = binding.birthdayEditText.text.toString()
 
             val diary = Diary(0, name, telephone, address, birthday)
             db.insertFriend(diary)

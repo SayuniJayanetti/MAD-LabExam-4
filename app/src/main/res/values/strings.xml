@@ -6,6 +6,10 @@
     <string name="telephone_no">Enter Telephone No.</string>
     <string name="address">Enter Address</string>
     <string name="birthday">Enter Birthday</string>
+    <string name="display_name">Name</string>
+    <string name="display_telephone">Telephone No</string>
+    <string name="display_address">Address</string>
+    <string name="display_birthday">Birthday</string>
 
 
 </resources>
