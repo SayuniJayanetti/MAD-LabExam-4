@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LabExam4</string>
+    <string name="name">My Diary</string>
+    <string name="add_friend">Add a friend</string>
+    <string name="friend_name"> Enter Name</string>
+    <string name="telephone_no">Enter Telephone No.</string>
+    <string name="address">Enter Address</string>
+    <string name="birthday">Enter Birthday</string>
+
+
 </resources>

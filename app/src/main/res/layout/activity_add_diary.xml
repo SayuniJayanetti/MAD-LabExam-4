@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ViewModel.AddDiaryActivity">
+
+    <TextView
+        android:id="@+id/addDiaryHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_friend"
+        android:textStyle="bold"
+        android:textColor="@color/purple"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_done_24"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/addDiaryHeading"
+        android:layout_marginEnd="6dp"/>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="@string/friend_name"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:layout_below="@id/addDiaryHeading"
+        android:background="@drawable/purple_border"
+        android:layout_marginTop="40dp"
+        android:maxLines="1"
+        />
+
+    <EditText
+        android:id="@+id/telephoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="@string/telephone_no"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:background="@drawable/purple_border"
+        android:layout_below="@id/nameEditText"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="@string/address"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:background="@drawable/purple_border"
+        android:layout_below="@id/telephoneEditText"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/birthdayEditText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="@string/birthday"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:background="@drawable/purple_border"
+        android:layout_below="@id/addressEditText"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>

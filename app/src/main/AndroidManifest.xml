@@ -13,6 +13,18 @@
         android:theme="@style/Theme.LabExam4"
         tools:targetApi="31">
         <activity
+            android:name=".DiaryDatabaseHelper"
+            android:exported="false" />
+        <activity
+            android:name=".DiaryAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".ViewModel.UpdateDiaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewModel.AddDiaryActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
