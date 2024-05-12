@@ -23,7 +23,7 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableQuery =
-            "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_TELEPHONE INTEGER, $COLUMN_ADDRESS TEXT, $COLUMN_BIRTHDAY TEXT)"
+            "CREATE TABLE $TABLE_NAME($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_NAME TEXT, $COLUMN_TELEPHONE TEXT, $COLUMN_ADDRESS TEXT, $COLUMN_BIRTHDAY TEXT)"
         db?.execSQL(createTableQuery)
     }
 
@@ -56,7 +56,7 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         while (cursor.moveToNext()){
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
             val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
-            val telephone= cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TELEPHONE))
+            val telephone= cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEPHONE))
             val address = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS))
             val birthday = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BIRTHDAY))
 
@@ -66,5 +66,40 @@ class DiaryDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE
         cursor.close()
         db.close()
         return friendsList
+    }
+
+    fun updateFriend(diary: Diary){
+
+        val db = writableDatabase
+        val values = ContentValues().apply{
+            put(COLUMN_NAME,diary.name)
+            put(COLUMN_TELEPHONE,diary.telephone)
+            put(COLUMN_ADDRESS,diary.address)
+            put(COLUMN_BIRTHDAY,diary.birthday)
+        }
+        val whereClause = "$COLUMN_ID = ?"
+        val whereArgs = arrayOf(diary.id.toString())
+        db.update(TABLE_NAME, values, whereClause, whereArgs)
+        db.close()
+
+    }
+
+    fun getFriendById(friendId: Int): Diary{
+
+        val db = readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = $friendId"
+        val cursor = db.rawQuery(query,null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+        val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
+        val telephone = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TELEPHONE))
+        val address = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS))
+        val birthday = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BIRTHDAY))
+
+        cursor.close()
+        db.close()
+        return Diary(id,name,telephone,address,birthday)
+
     }
 }

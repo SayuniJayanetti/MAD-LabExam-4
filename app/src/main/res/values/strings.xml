@@ -10,6 +10,7 @@
     <string name="display_telephone">Telephone No</string>
     <string name="display_address">Address</string>
     <string name="display_birthday">Birthday</string>
+    <string name="edit_friend">Edit Details</string>
 
 
 </resources>

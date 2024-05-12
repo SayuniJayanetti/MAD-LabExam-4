@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.labexam4.ViewModel.UpdateDiaryActivity
 
 class DiaryAdapter (private var friends: List<Diary>,context: Context) :
     RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder>(){
@@ -20,7 +21,7 @@ class DiaryAdapter (private var friends: List<Diary>,context: Context) :
         val telephoneTextView: TextView = itemView.findViewById(R.id.telephoneTextView)
         val addressTextView: TextView = itemView.findViewById(R.id.addressTextView)
         val birthdayTextView: TextView = itemView.findViewById(R.id.birthdayTextView)
-
+        val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
 
     }
 
@@ -34,9 +35,19 @@ class DiaryAdapter (private var friends: List<Diary>,context: Context) :
     override fun onBindViewHolder(holder: DiaryViewHolder, position: Int) {
         val diary = friends[position]
         holder.nameTextView.text = diary.name
-        holder.telephoneTextView.text = diary.telephone.toString()
+        holder.telephoneTextView.text = diary.telephone
         holder.addressTextView.text = diary.address
         holder.birthdayTextView.text = diary.birthday
+
+        holder.updateButton.setOnClickListener{
+            val intent = Intent(holder.itemView.context, UpdateDiaryActivity::class.java).apply{
+
+                putExtra("diary_id", diary.id)
+
+            }
+
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
 

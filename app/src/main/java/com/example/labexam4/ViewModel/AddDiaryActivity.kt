@@ -21,7 +21,7 @@ class AddDiaryActivity : AppCompatActivity() {
         //data will be stored only if the save button is clicked
         binding.saveButton.setOnClickListener{
             val name = binding.nameEditText.text.toString()
-            val telephone = binding.telephoneEditText.text.toString().toIntOrNull() ?: 0
+            val telephone = binding.telephoneEditText.text.toString()
             val address = binding.addressEditText.text.toString()
             val birthday = binding.birthdayEditText.text.toString()
 
