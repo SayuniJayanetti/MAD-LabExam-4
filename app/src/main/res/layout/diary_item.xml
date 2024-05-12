@@ -52,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/display_telephone"
+            android:textStyle="bold"
             android:maxLines="3"
             android:layout_marginTop="4dp"/>
 
@@ -60,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/display_address"
+            android:textStyle="bold"
             android:maxLines="3"
             android:layout_marginTop="4dp"/>
 
@@ -68,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/display_birthday"
+            android:textStyle="bold"
             android:maxLines="3"
             android:layout_marginTop="4dp"/>
 
