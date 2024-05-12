@@ -22,7 +22,7 @@ class DiaryAdapter (private var friends: List<Diary>,context: Context) :
         val addressTextView: TextView = itemView.findViewById(R.id.addressTextView)
         val birthdayTextView: TextView = itemView.findViewById(R.id.birthdayTextView)
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
-
+        val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
@@ -47,6 +47,13 @@ class DiaryAdapter (private var friends: List<Diary>,context: Context) :
             }
 
             holder.itemView.context.startActivity(intent)
+        }
+
+
+        holder.deleteButton.setOnClickListener{
+            db.deleteFriend(diary.id)
+            refreshData(db.getAllFriends())
+            Toast.makeText(holder.itemView.context,"Note Deleted", Toast.LENGTH_SHORT).show()
         }
 
     }
